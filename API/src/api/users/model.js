@@ -38,7 +38,7 @@ UserSchema.pre('save', function (next) {
 
 UserSchema.methods = {
     view() {
-        let fields = ['id', 'username', 'email'];
+        let fields = ['username', 'email']; //let fields = ['id', 'username', 'email'];
         let view = {};
 
         fields.forEach((field) => { view[field] = this[field] });

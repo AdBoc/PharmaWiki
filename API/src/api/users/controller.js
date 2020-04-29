@@ -20,13 +20,12 @@ const create = async ({ body }, res, next) => {
 };
 
 const login = async (req, res, next) => {
-    const user = req.user;
+    const { user } = req;
     const token = sign(user);
 
-    return res.json({
-        user: user.view(),
+    res.json({//user: user.view(),
         token
-    })
+    });
 };
 
 const showMe = async (req, res, next) => {
@@ -67,4 +66,3 @@ const index = async ({ query }, res, next) => {
     res.json(users);
 };
 module.exports = { create, deleteDB, login, index, showMe, editUser }
-// res.redirect('/my_secret_page');/WYLOGOWANIE/ZMIANA HASLA
