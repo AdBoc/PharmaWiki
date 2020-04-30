@@ -1,9 +1,46 @@
-//import { userConstants } from '../_constants';
-// let user = JSON.parse(localStorage.getItem('user'));
-// const initialState = user ? { loggedIn: true, user } : {};
+import {
+    // REGISTER_REQUEST,
+    // REGISTER_SUCCESS,
+    // REGISTER_FAILURE,
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+    LOGOUT_SUCCESS,
+    LOGIN_FAILURE
+} from '../constants';
 
-export function authentication(state = {}, action) {
-    switch(action.type){
+const initialState = {
+    isLogging: false,
+    isLogged: false,
+    data: '',
+    error: ''
+}
+
+export function authentication(state = initialState, action) {
+    switch (action.type) {
+        case LOGIN_REQUEST:
+            return {
+                ...state,
+                isLogging: true,
+                isLogged: false
+            }
+        case LOGIN_SUCCESS:
+            return {
+                isLogging: false,
+                isLogged: true,
+                data: action.payload
+            }
+        case LOGIN_FAILURE:
+            return {
+                ...state,
+                isLogging: false,
+                isLogged: false,
+                error: action.payload
+            }
+        case LOGOUT_SUCCESS:
+            return {
+                ...state,
+                isLogged: false
+            }
         default:
             return state;
     }

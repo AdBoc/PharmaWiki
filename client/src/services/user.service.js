@@ -13,16 +13,16 @@ class AuthService {
       .then(response => {
         console.log(response.data.token);
         if (response.data.token)
-          localStorage.setItem('user', JSON.stringify(response.data));
+          localStorage.setItem('token', JSON.stringify(response.data));
 
         return response.data;
       })
       .catch(error => console.log(error.message));
   }
 
-     logout() {
-       localStorage.removeItem('user');
-     }
+  logout() {
+    localStorage.removeItem('token');
+  }
 
   //   register(username, email, password) {
   //     return axios.post(API_URL + "signup", {
