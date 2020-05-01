@@ -33,23 +33,8 @@ class Login extends Component {
                     <input type="submit" value="Submit" />
                 </form>
                 <button onClick={this.logoutButton}>Logout button</button>
-
-                <p>Info isLogged: {this.props.isLogged.toString()}</p>
-                <p>Info isLogging: {this.props.isLogging.toString()}</p>
-                <p>Info data: {this.props.data}</p>
-                <p>Info error: {this.props.error}</p>
-
             </div>
         )
-    }
-}
-
-const mapStateToProps = state => {
-    return {
-        isLogged: state.authentication.isLogged,
-        isLogging: state.authentication.isLogging,
-        data: state.authentication.data,
-        error: state.authentication.error
     }
 }
 
@@ -60,4 +45,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(null, mapDispatchToProps)(Login);

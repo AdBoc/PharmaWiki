@@ -5,6 +5,12 @@ import * as serviceWorker from './serviceWorker';
 import { store } from './helpers/store'
 import { Provider } from 'react-redux';
 import './styles/index.css'
+import { AUTHORIZE } from './constants'
+
+const token = localStorage.getItem('token');
+if (token) {
+store.dispatch({ type: AUTHORIZE })
+}
 
 ReactDOM.render(
   <React.StrictMode>
