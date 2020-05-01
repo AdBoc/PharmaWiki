@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import GeneratedData from './GeneratedData'
 
 class Drugs extends Component {
     render() {
         return this.props.isLogged ? (
             <div>
                 <p>Welcome to Drug Wiki</p>
-                <form>
-                    <label>Search for Drug<input /></label>
-                    <input type="submit" value="Submit" />
-                </form>
+                <GeneratedData />
             </div>
         ) : (
                 <div>

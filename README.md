@@ -1,4 +1,5 @@
 PWA made with react and redux(state management), axios for API calls, mobile first approach for CSS with media queries.
+App will never need access to data from drugs and active substances outside of component so state will be stored locally(without redux).
 
 ASYNC REDUX ACTIONS
 -Synchronous action(changing theme) - as soon as action is dispatched, state is updated
@@ -28,8 +29,6 @@ id juz nie jest widowczne w metodzie view() w schema
 
 CLIENT:
 
-Proxy w package.json nie jest juz potrzebne??
-
 Zrobienie Fetch z basicAuth
 
 
@@ -40,7 +39,7 @@ CLIENT:
 Added simple working login and logout function
 
 Login component is rewritten
-    
+
 
     v 0.3 - working register option, simple routing
 
@@ -53,6 +52,13 @@ Added isLogged flag
 Added simple routing on website
 
 Added working create account 
+
+
+    v 0.4 - get drugs data on main page
+
+CLIENT:
+
+Checking for drugs list now works
 
 
 
