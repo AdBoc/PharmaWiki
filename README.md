@@ -18,41 +18,41 @@ DEVELOPMENT HISTORY
 
 API:
 
-    Naprawienie niepoprawnego wysyłania odpowiedzi na złe podanie loginu i hasła
+Naprawienie niepoprawnego wysyłania odpowiedzi na złe podanie loginu i hasła
 
-    Dodanie CORS headers w backend, dodatnie opcji Authorize w headersach
+Dodanie CORS headers w backend, dodatnie opcji Authorize w headersach
 
-    login w res.json przy logowaniu wysyla tylko token (nie wysyla juz user.view())
+login w res.json przy logowaniu wysyla tylko token (nie wysyla juz user.view())
 
-    id juz nie jest widowczne w metodzie view() w schema
-
-CLIENT:
-
-    Proxy w package.json nie jest juz potrzebne??
-
-    Zrobienie Fetch z basicAuth
-
-
-    v 0.2
+id juz nie jest widowczne w metodzie view() w schema
 
 CLIENT:
 
-    Added simple working login and logout function
+Proxy w package.json nie jest juz potrzebne??
 
-    Login component is rewritten
+Zrobienie Fetch z basicAuth
+
+
+    v 0.2 - working login option
+
+CLIENT:
+
+Added simple working login and logout function
+
+Login component is rewritten
     
 
-    v 0.3
+    v 0.3 - working register option, simple routing
 
 CLIENT:
 
-    Added history router and BrowserRouter is now Router
+Added history router and BrowserRouter is now Router
 
-    Added isLogged flag 
+Added isLogged flag 
 
-    Added simple routing on website
+Added simple routing on website
 
-    Added working create account 
+Added working create account 
 
 
 
