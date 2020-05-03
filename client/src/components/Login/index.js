@@ -22,6 +22,7 @@ class Login extends Component {
     logoutButton = (e) => {
         e.preventDefault();
         this.props.logout();
+        window.location.reload();
     }
 
     render() {

@@ -3,7 +3,7 @@ import { Router, Switch, Route } from 'react-router-dom'
 import './styles/normalizeAndReset.css'
 import { history } from './helpers/history'
 
-// ActiveSubstances from './components/ActiveSubstances'
+import ActiveSubstances from './components/ActiveSubstances'
 import Nav from './components/Nav'
 import Login from './components/Login'
 import Register from './components/Register'
@@ -21,7 +21,7 @@ function App() {
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
           <Route exact path='/' component={Drugs} />
-          <Route path='/active' component={Login} />
+          <Route path='/active' component={ActiveSubstances} />
           <PrivateRoute path='/user' component={User} />
           <Route component={PageError} />
         </Switch>

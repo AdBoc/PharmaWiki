@@ -4,6 +4,7 @@ import axios from 'axios';
 export default class GeneratedData extends Component {
     state = {
         query: '',
+        isChecked: false,
         data: []
     }
 
@@ -20,7 +21,12 @@ export default class GeneratedData extends Component {
                     data: res.data
                 })
             )
-            .catch(err => console.log(err.message));
+            .catch(err => {
+                console.log(err.message)
+                this.setState({
+                    data: ''
+                })
+            });
     }
 
     handleChange = (e) => {
@@ -28,21 +34,56 @@ export default class GeneratedData extends Component {
         this.setState({ [name]: value });
     }
 
+    toggleChange = (e) => {
+        const { name } = e.target;
+        this.setState({
+            [name]: !this.state.isChecked
+        })
+    }
+
     handleSubmit = (e) => {
         e.preventDefault()
         let token = localStorage.getItem('token');
         token = token.replace(/^"(.*)"$/, '$1');
-        axios.get(`http://localhost:2137/api/products/${this.state.query}`, {
-            headers: {
-                Authorization: "Bearer " + token
-            }
+
+        if (this.state.isChecked) {
+            axios.get(`http://localhost:2137/api/products/active/${this.state.query}`, {
+                headers: {
+                    Authorization: "Bearer " + token
+                }
+            })
+                .then(res =>
+                    this.setState({
+                        data: res.data
+                    })
+                )
+                .catch(err => {
+                    console.log(err.message)
+                    this.setState({
+                        data: ''
+                    })
+                });
+        } else {
+            axios.get(`http://localhost:2137/api/products/${this.state.query}`, {
+                headers: {
+                    Authorization: "Bearer " + token
+                }
+            })
+                .then(res =>
+                    this.setState({
+                        data: res.data
+                    })
+                )
+                .catch(err => {
+                    console.log(err.message)
+                    this.setState({
+                        data: ''
+                    })
+                });
+        }
+        this.setState({
+            query: ''
         })
-            .then(res =>
-                this.setState({
-                    data: res.data
-                })
-            )
-            .catch(err => console.log(err.message));
     }
 
     render() {
@@ -57,13 +98,14 @@ export default class GeneratedData extends Component {
                 )
             })
         ) : (
-                <div> No data to show</div>
+                <div> Nothing was found</div>
             );
 
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Search for Drug<input name="query" onChange={this.handleChange} /></label>
+                    <label>Search for Drug<input name="query" value={this.state.query} onChange={this.handleChange} /></label>
+                    <input type='checkbox' name="isChecked" checked={this.state.isChecked} onChange={this.toggleChange} />
                     <input type="submit" value="Submit" />
                 </form>
                 {drugsList}

@@ -58,9 +58,24 @@ Added working create account
 
 CLIENT:
 
-Checking for drugs list now works
+Searching for drugs now works
 
 
+    v 0.5 - get active substances, search for drug by active substance
+
+CLIENT:
+
+Searching for active substances now works
+
+Searching for drugs with active substances also works 
+
+### Code will have to be refractored due to low readability 
 
 
     DO SPRAWDZANIA : CZY EMAILE MOGA BY TE SAME Z INNA DOMENA
+
+
+TODO: 
+Make user page and allow for edits 
+Make password confirm while registering and other regex verifiers
+PWA features
