@@ -69,6 +69,14 @@ Searching for active substances now works
 
 Searching for drugs with active substances also works 
 
+
+    v 0.6 - added working navbar
+
+CLIENT:
+
+Added working navbar
+
+
 ### Code will have to be refractored due to low readability 
 
 

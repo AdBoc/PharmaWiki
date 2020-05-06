@@ -1,7 +1,133 @@
-.navbar{
-    background-color: #96f276;
-    display: flex;
-    justify-content: space-between;
+// @import "../../styles/variables";
+
+// // .navbar {
+// //     position: fixed;
+
+// //     &__list {
+// //         display: flex;
+// //         flex-direction: row;
+// //     }
+// // }
+
+// // .hamburger {
+// //     padding: 10px;
+// //     display: inline-block;
+// //     cursor: pointer;
+// //     background-color: transparent;
+// //     border: 0;
+// //     margin: 0;
+
+// //     &__box {
+        
+// //     }
+// //     &__inner { 
+
+// //     }
+// // }
+
+//-------------------------------------------------------------------------------------------------------------------------------
+
+$dark: #d6d5d5;
+$light: #FFFFFF;
+
+body {
+  background-color: $dark;
+  padding: 20px;
 }
 
-//make dark/light theme classes
+.hamburger {
+  padding: 10px;
+  display: inline-block;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+}
+
+.hamburger, .navigation {
+  transition: transform .3s .1s ease-in-out;
+}
+
+.hamburger--active {
+  transform: translatex(250px);
+}
+
+.hamburger__box {
+  width: 35px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+}
+
+@mixin hamburger-line {
+  width: 100%;
+  height: 3px;
+  background-color: $light;
+  position: absolute;
+}
+
+.hamburger__inner {
+  @include hamburger-line;
+  
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color .1s .2s ease-in-out;
+}
+
+.hamburger__inner::before,
+.hamburger__inner::after {
+  @include hamburger-line;
+  
+  content: '';
+  left: 0;
+  transition: transform .2s .2s ease-in-out;
+} 
+
+.hamburger__inner::before {
+  top: -10px;
+}
+
+.hamburger__inner::after {
+  top: 10px;
+}
+
+.hamburger--active .hamburger__inner {
+  background-color: transparent;
+}
+
+.hamburger--active .hamburger__inner:before {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger--active .hamburger__inner:after {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+.navigation {
+  height: 100vh;
+  width: 250px;
+  background-color: $light;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(-250px);
+}
+
+.navigation--active {
+  transform: translateX(0px);
+}
+
+.navigation__list {
+  margin-top: 50px;
+  list-style: none;
+}
+
+.navigation__item {
+  margin-bottom: 20px;
+  
+  a {
+    text-decoration: none;
+    color: $dark;
+  }
+}
