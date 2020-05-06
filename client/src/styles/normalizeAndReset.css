@@ -406,3 +406,8 @@ table {
   [hidden] {
     display: none;
   }
+
+
+  body { 
+    padding-top: 3rem;
+  }

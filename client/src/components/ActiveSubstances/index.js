@@ -17,7 +17,7 @@ class Drugs extends Component {
 
     componentDidUpdate(prevProps) {
         let token = localStorage.getItem('token');
-        token = token.replace(/^"(.*)"$/, '$1');
+        if (token) token = token.replace(/^"(.*)"$/, '$1');
         if (this.props.location !== prevProps.location) {
             console.log('now url is changed');
             const path = this.props.location.pathname.match(/(\w|\d){1,}$/);

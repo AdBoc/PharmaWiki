@@ -21,7 +21,7 @@ function App() {
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
           <Route exact path='/' component={Drugs} />
-          <Route path='/active' component={ActiveSubstances} />
+          <Route path='/substances' component={ActiveSubstances} />
           <PrivateRoute path='/user' component={User} />
           <Route component={PageError} />
         </Switch>
