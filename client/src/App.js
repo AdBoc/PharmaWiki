@@ -20,7 +20,7 @@ function App() {
         <Switch>
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
-          <Route exact path='/' component={Drugs} />
+          <Route path='/products' component={Drugs} />
           <Route path='/substances' component={ActiveSubstances} />
           <PrivateRoute path='/user' component={User} />
           <Route component={PageError} />

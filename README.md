@@ -87,3 +87,10 @@ TODO:
 Make user page and allow for edits 
 Make password confirm while registering and other regex verifiers
 PWA features
+Klikanie w produkty odnosi do nich
+
+history={history} zrobione aby uzywac history.push()
+
+
+
+LINK in router insead of replacing pushes https://github.com/ReactTraining/react-router/issues/3776

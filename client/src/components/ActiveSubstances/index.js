@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import GeneratedData from './GeneratedData'
-import axios from 'axios';
+import userService from '../../services/user.service'
 
-class Drugs extends Component {
+class Substances extends Component {
     state = {
         query: '',
         data: ''
@@ -15,72 +15,32 @@ class Drugs extends Component {
         this.setState({ [name]: value });
     }
 
-    componentDidUpdate(prevProps) {
-        let token = localStorage.getItem('token');
-        if (token) token = token.replace(/^"(.*)"$/, '$1');
-        if (this.props.location !== prevProps.location) {
-            console.log('now url is changed');
-            const path = this.props.location.pathname.match(/(\w|\d){1,}$/);
-            if (path) {
-                axios.get(`http://localhost:2137/api/active/${path[0]}`, {
-                    headers: {
-                        Authorization: "Bearer " + token
-                    }
-                })
-                    .then(res =>
-                        this.setState({
-                            data: res.data
-                        })
-                    )
-                    .catch(err => {
-                        console.log(err.message);
-                        this.setState({
-                            data: ''
-                        })
-                    });
-            }
-            else {
-                axios.get(`http://localhost:2137/api/active/`, {
-                    headers: {
-                        Authorization: "Bearer " + token
-                    }
-                })
-                    .then(res =>
-                        this.setState({
-                            data: res.data
-                        })
-                    )
-                    .catch(err => {
-                        console.log(err.message);
-                        this.setState({
-                            data: ''
-                        })
-                    });
-            }
-        }
+    componentDidMount() {
+        userService.getSubstances('').then(data => {
+            this.setState({
+                data: data
+            })
+        })
     }
 
-    componentDidMount() {
-
-        let token = localStorage.getItem('token');
-        if (token)
-            token = token.replace(/^"(.*)"$/, '$1');
-        axios.get(`http://localhost:2137/api/active/`, {
-            headers: {
-                Authorization: "Bearer " + token
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            const path = this.props.location.pathname.match(/(\w|\d){1,}$/);
+            if (path) {
+                userService.getSubstances(path[0]).then(data => {
+                    this.setState({
+                        data: data
+                    })
+                })
             }
-        })
-            .then(res =>
-                this.setState({
-                    data: res.data
+            else {
+                userService.getSubstances('').then(data => {
+                    this.setState({
+                        data: data
+                    })
                 })
-            )
-            .catch(err => {
-                console.log(err.message);
-                this.setState({
-                    data: ''
-                })
-            });
+            }
+        }
     }
 
     render() {
@@ -90,7 +50,7 @@ class Drugs extends Component {
 
                 <form onSubmit={this.handleSubmit}>
                     <label>Search for Active Substances<input name="query" onChange={this.handleChange} /></label>
-                    <Link to={`/active/${this.state.query}`}><button>Submit</ button></Link>
+                    <Link to={`/substances/${this.state.query}`}><button>Submit</ button></Link>
                 </form>
 
                 <GeneratedData data={this.state.data} />
@@ -112,4 +72,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Drugs);
+export default connect(mapStateToProps)(Substances);

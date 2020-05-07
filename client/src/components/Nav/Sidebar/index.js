@@ -7,10 +7,10 @@ export default function SideBar(props) {
         <div>
             <div className="sideDrawer">
                 <ul>
-                    <Link to={'/'} onClick={props.changeStatus}><li>Drugs</li></Link>
+                    <Link to={'/products'} onClick={props.changeStatus}><li>Drugs</li></Link>
                     <Link to={'/substances'} onClick={props.changeStatus}><li>Substances</li></Link>
                     <Link to={'/user'} onClick={props.changeStatus}><li>User</li></Link>
-                    <Link to={'/'} onClick={props.changeStatus}><li>Login/Logout</li></Link>
+                    <Link to={'/login'} onClick={props.changeStatus}><li>Login/Logout</li></Link>
                 </ul>
             </div>
             <div className="backdrop" onClick={props.click}></div>
